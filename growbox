@@ -1,0 +1,402 @@
+[
+    {
+        "id": "8f7bf719.23cd",
+        "type": "tab",
+        "label": "Growbox",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4263c060.b8cea8",
+        "type": "server-state-changed",
+        "z": "8f7bf719.23cd",
+        "name": "Switch Growbox",
+        "server": "83e4ae3.cf6cc5",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "switch.growlight",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "for": 0,
+        "forType": "num",
+        "forUnits": "minutes",
+        "ignorePrevStateNull": false,
+        "ignorePrevStateUnknown": false,
+        "ignorePrevStateUnavailable": false,
+        "ignoreCurrentStateUnknown": false,
+        "ignoreCurrentStateUnavailable": false,
+        "x": 110,
+        "y": 180,
+        "wires": [
+            [
+                "2574de9d.128b1a"
+            ],
+            [
+                "d90da8f5.c29b98"
+            ]
+        ]
+    },
+    {
+        "id": "62dd8f26.efdb5",
+        "type": "api-call-service",
+        "z": "8f7bf719.23cd",
+        "name": "Switch off growbox",
+        "server": "83e4ae3.cf6cc5",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_off",
+        "entityId": "switch.growlight",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 400,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3a51b2b0.8db9ae",
+        "type": "controltimer",
+        "z": "8f7bf719.23cd",
+        "name": "6 hour",
+        "timerType": "delay",
+        "timerDurationUnit": "hour",
+        "timerDurationType": "num",
+        "timerDuration": 6,
+        "timerLoopTimeoutUnit": "second",
+        "timerLoopTimeoutType": "num",
+        "timerLoopTimeout": 0,
+        "loopTimeoutMessageType": "str",
+        "loopTimeoutMessage": "LOOP_TIMEOUT",
+        "timerMaxLoopIterationsType": "num",
+        "timerMaxLoopIterations": 0,
+        "loopMaxIterationsMessageType": "str",
+        "loopMaxIterationsMessage": "MAX_LOOP_ITERATIONS",
+        "isConsecutiveStartActionTimerResetAllowed": true,
+        "isRunningTimerProgressVisible": true,
+        "outputReceivedMessageOnTimerTrigger": true,
+        "outputReceivedMessageOnTimerHalt": true,
+        "startTimerOnReceivalOfUnknownMessage": false,
+        "resetTimerOnReceivalOfUnknownMessage": false,
+        "isDebugModeEnabled": false,
+        "timerTriggeredMessageType": "str",
+        "timerTriggeredMessage": "TIMER_TRIGGERED",
+        "timerHaltedMessageType": "str",
+        "timerHaltedMessage": "TIMER_HALTED",
+        "isStartActionEnabled": true,
+        "isStopActionEnabled": true,
+        "isResetActionEnabled": true,
+        "isPauseActionEnabled": true,
+        "isContinueActionEnabled": true,
+        "actionPropertyNameType": "str",
+        "actionPropertyName": "payload",
+        "startActionNameType": "str",
+        "startActionName": "START",
+        "stopActionNameType": "str",
+        "stopActionName": "STOP",
+        "resetActionNameType": "str",
+        "resetActionName": "RESET",
+        "pauseActionNameType": "str",
+        "pauseActionName": "PAUSE",
+        "continueActionNameType": "str",
+        "continueActionName": "CONTINUE",
+        "x": 430,
+        "y": 180,
+        "wires": [
+            [
+                "50a5fe71.b9d9c8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "50a5fe71.b9d9c8",
+        "type": "change",
+        "z": "8f7bf719.23cd",
+        "name": "Trigger",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "on",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 180,
+        "wires": [
+            [
+                "62dd8f26.efdb5",
+                "8d51162.30c8768",
+                "6415e7dc.085928"
+            ]
+        ]
+    },
+    {
+        "id": "ea1593c9.3c4548",
+        "type": "change",
+        "z": "8f7bf719.23cd",
+        "name": "Trigger",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "on",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 520,
+        "wires": [
+            [
+                "5ee7ceda.2f058"
+            ]
+        ]
+    },
+    {
+        "id": "6415e7dc.085928",
+        "type": "controltimer",
+        "z": "8f7bf719.23cd",
+        "name": "2 hour",
+        "timerType": "delay",
+        "timerDurationUnit": "hour",
+        "timerDurationType": "num",
+        "timerDuration": 2,
+        "timerLoopTimeoutUnit": "second",
+        "timerLoopTimeoutType": "num",
+        "timerLoopTimeout": 0,
+        "loopTimeoutMessageType": "str",
+        "loopTimeoutMessage": "LOOP_TIMEOUT",
+        "timerMaxLoopIterationsType": "num",
+        "timerMaxLoopIterations": 0,
+        "loopMaxIterationsMessageType": "str",
+        "loopMaxIterationsMessage": "MAX_LOOP_ITERATIONS",
+        "isConsecutiveStartActionTimerResetAllowed": true,
+        "isRunningTimerProgressVisible": true,
+        "outputReceivedMessageOnTimerTrigger": true,
+        "outputReceivedMessageOnTimerHalt": true,
+        "startTimerOnReceivalOfUnknownMessage": false,
+        "resetTimerOnReceivalOfUnknownMessage": false,
+        "isDebugModeEnabled": false,
+        "timerTriggeredMessageType": "str",
+        "timerTriggeredMessage": "TIMER_TRIGGERED",
+        "timerHaltedMessageType": "str",
+        "timerHaltedMessage": "TIMER_HALTED",
+        "isStartActionEnabled": true,
+        "isStopActionEnabled": true,
+        "isResetActionEnabled": true,
+        "isPauseActionEnabled": true,
+        "isContinueActionEnabled": true,
+        "actionPropertyNameType": "str",
+        "actionPropertyName": "payload",
+        "startActionNameType": "str",
+        "startActionName": "START",
+        "stopActionNameType": "str",
+        "stopActionName": "STOP",
+        "resetActionNameType": "str",
+        "resetActionName": "RESET",
+        "pauseActionNameType": "str",
+        "pauseActionName": "PAUSE",
+        "continueActionNameType": "str",
+        "continueActionName": "CONTINUE",
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "ea1593c9.3c4548"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5ee7ceda.2f058",
+        "type": "api-call-service",
+        "z": "8f7bf719.23cd",
+        "name": "Switch on growbox",
+        "server": "83e4ae3.cf6cc5",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.growlight",
+        "data": "",
+        "dataType": "jsonata",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 740,
+        "y": 580,
+        "wires": [
+            [
+                "2574de9d.128b1a"
+            ]
+        ]
+    },
+    {
+        "id": "d90da8f5.c29b98",
+        "type": "change",
+        "z": "8f7bf719.23cd",
+        "name": "STOP",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "STOP",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 281,
+        "y": 220,
+        "wires": [
+            [
+                "3a51b2b0.8db9ae",
+                "6415e7dc.085928"
+            ]
+        ]
+    },
+    {
+        "id": "2574de9d.128b1a",
+        "type": "change",
+        "z": "8f7bf719.23cd",
+        "name": "Start",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "START",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 120,
+        "wires": [
+            [
+                "3a51b2b0.8db9ae",
+                "6a10bb0d.2dc4e4"
+            ]
+        ]
+    },
+    {
+        "id": "ba407bc2.ee62d8",
+        "type": "link out",
+        "z": "8f7bf719.23cd",
+        "name": "",
+        "links": [
+            "683e8916.18b6b8"
+        ],
+        "x": 975,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "6a10bb0d.2dc4e4",
+        "type": "change",
+        "z": "8f7bf719.23cd",
+        "name": "started message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "The Growbox started",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 650,
+        "y": 80,
+        "wires": [
+            [
+                "ba407bc2.ee62d8"
+            ]
+        ]
+    },
+    {
+        "id": "8d51162.30c8768",
+        "type": "change",
+        "z": "8f7bf719.23cd",
+        "name": "stopped message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "The Growbox stopped shining",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 700,
+        "y": 280,
+        "wires": [
+            [
+                "ba407bc2.ee62d8"
+            ]
+        ]
+    },
+    {
+        "id": "83e4ae3.cf6cc5",
+        "type": "server",
+        "name": "Home Assistant",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    }
+]
